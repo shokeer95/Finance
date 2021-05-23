@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table style="width:100%" class="table table-striped">
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+
+        {% for row in rows %}
+            <tr>
+                <td>{{ row["symbol"] }}</td>
+                <td>{{ row["name"] }}</td>
+                <td>{{ row["num"] }}</td>
+                <td>${{ row["price"] }}</td>
+                <td>${{ "{:.2f}".format(row["total"]) }}</td>
+            </tr>
+        {% endfor %}
+
+        <tr>
+            <td>CASH</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>${{ "{:.2f}".format(cash[0]["cash"]) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-weight: bold;">${{ "{:.2f}".format(total) }}</td>
+        </tr>
+
+</table>
+{% endblock %}
